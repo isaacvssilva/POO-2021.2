@@ -42,13 +42,40 @@ void Usuario::setIdade(int idade){
 void Usuario::setSexo(char sx){
     sexo = sx;
 }
-void Usuario::print(){
-    cout << "......................." << endl;
-    cout << "nome:" << getNome() << endl;
-    cout << "ocupacao:" << getOcupacao() << endl;
-    cout << "email:" << getEmail() << endl;
-    cout << "palavraChave:" << get_palavraChave() << endl;
-    cout << "idade:" << getIdade() << endl;
-    //cout << getSexo() << endl;
-    cout << "......................." << endl;
+
+void Usuario::print(int print){
+
+    if(print == 1){
+
+        cout << "......................." << endl;
+        cout << "nome:" << getNome() << endl;
+        cout << "ocupacao:" << getOcupacao() << endl;
+        cout << "email:" << getEmail() << endl;
+        cout << "palavraChave:" << get_palavraChave() << endl;
+        cout << "idade:" << getIdade() << endl;
+        //cout << "sexo:" << getSexo() << endl;
+        cout << "......................." << endl;
+
+    }else if(print == 2){
+
+        cout << "......................." << endl;
+        cout << "nome:" << getNome() << endl;
+        cout << "ocupacao:" << getOcupacao() << endl;
+        cout << "email:" << getEmail() << endl;
+        cout << "palavraChave:" << get_palavraChave() << endl;
+        cout << "idade:" << getIdade() << endl;
+        //cout << "sexo:" << getSexo() << endl;
+        cout << "......................." << endl;
+
+    }else if(print == 3){
+
+        cout << "......................." << endl;
+        cout << "nome:" << getNome() << endl;
+        cout << "ocupacao:" << getOcupacao() << endl;
+        cout << "email:" << getEmail() << endl;
+        cout << "palavraChave:" << get_palavraChave() << endl;
+        cout << "idade:" << getIdade() << endl;
+        //cout << "sexo:" << getSexo() << endl;
+        cout << "......................." << endl;
+    }
 }

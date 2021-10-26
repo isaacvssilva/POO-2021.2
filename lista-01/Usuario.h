@@ -37,7 +37,8 @@ public:
     //setter
     void setSexo(char sexo);
 
-    void print();
+    void print(int print);
+
 };
 
 #endif
