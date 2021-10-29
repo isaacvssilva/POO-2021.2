@@ -1,4 +1,4 @@
-Programa construido no linux. Iserir os seguintes comandos no terminal para executar o programa e começar a informar os dados:
+Iserir os seguintes comandos no terminal para executar o programa e começar a informar os dados:
 
 g++ *.cpp -o ./exe
 ./exe

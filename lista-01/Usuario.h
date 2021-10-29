@@ -6,39 +6,32 @@ using namespace std;
 class Usuario{
  
 private:
+
 //atributos
     string nome,ocupacao, email, palavraChave;
     int idade;
     char sexo;
 
 public:
+
+    Usuario();
+    Usuario(string nome, string ocupacao, string email, string palavraChave, int idade, char sx);
     //getter
     string getNome();
+    string getEmail();
+    string getOcupacao();
+    string get_palavraChave();
+    int getIdade();
+    char getSexo();
+    
     //setter
     void setNome(string nome);
-    //getter
-    string getOcupacao();
-    //setter
     void setOcupacao(string ocupacao);
-    //getter
-    string getEmail();
-    //setter
     void setEmail(string email);
-    //getter
-    string get_palavraChave();
-    //setter
     void set_palavraChave(string palavraChave);
-    //getter
-    int getIdade();
-    //setter
     void setIdade(int idade);
-    //getter
-    char getSexo();
-    //setter
-    void setSexo(char sexo);
-
+    void setSexo(char sx);
     void print(int print);
-
 };
 
 #endif

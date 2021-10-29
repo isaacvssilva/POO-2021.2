@@ -3,27 +3,40 @@
 
 using namespace std;
 
-//getter
-string Usuario::getNome(){
-   return this->nome;
-}
-string Usuario::getOcupacao(){
-    return this->ocupacao;
-}
-string Usuario::getEmail(){
-    return this->email;
-}
-string Usuario::get_palavraChave(){
-    return this->palavraChave;
-}
-int Usuario::getIdade(){
-    return this->idade;
-}
-char Usuario::getSexo(){
-    return this->sexo;
+Usuario::Usuario(){
+
 }
 
-//setter
+Usuario::Usuario(string nome, string ocupacao, string email, string palavraChave, int idade, char sx){
+
+    this->nome = nome;
+    this->ocupacao = ocupacao;
+    this->email = email;
+    this->palavraChave = palavraChave;
+    this->idade = idade;
+    sexo = sx;
+}
+
+//getters
+string Usuario::getNome(){
+    return nome;
+}
+string Usuario::getOcupacao(){
+    return ocupacao;
+}
+string Usuario::getEmail(){
+    return email;
+}
+string Usuario::get_palavraChave(){
+    return palavraChave;
+}
+int Usuario::getIdade(){
+    return idade;
+}
+char Usuario::getSexo(){
+    return sexo;
+}
+//setters
 void Usuario::setNome(string nome){
     this->nome = nome;
 }
@@ -53,7 +66,7 @@ void Usuario::print(int print){
         cout << "email:" << getEmail() << endl;
         cout << "palavraChave:" << get_palavraChave() << endl;
         cout << "idade:" << getIdade() << endl;
-        //cout << "sexo:" << getSexo() << endl;
+        cout << "sexo:" << getSexo() << endl;
         cout << "......................." << endl;
 
     }else if(print == 2){
@@ -64,7 +77,7 @@ void Usuario::print(int print){
         cout << "email:" << getEmail() << endl;
         cout << "palavraChave:" << get_palavraChave() << endl;
         cout << "idade:" << getIdade() << endl;
-        //cout << "sexo:" << getSexo() << endl;
+        cout << "sexo:" << getSexo() << endl;
         cout << "......................." << endl;
 
     }else if(print == 3){
@@ -75,7 +88,7 @@ void Usuario::print(int print){
         cout << "email:" << getEmail() << endl;
         cout << "palavraChave:" << get_palavraChave() << endl;
         cout << "idade:" << getIdade() << endl;
-        //cout << "sexo:" << getSexo() << endl;
+        cout << "sexo:" << getSexo() << endl;
         cout << "......................." << endl;
     }
 }
