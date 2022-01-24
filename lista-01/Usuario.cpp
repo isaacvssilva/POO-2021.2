@@ -3,9 +3,9 @@
 
 using namespace std;
 
-Usuario::Usuario(){
+Usuario::Usuario(){}
 
-}
+Usuario::~Usuario(){}
 
 Usuario::Usuario(string nome, string ocupacao, string email, string palavraChave, int idade, char sx){
 
