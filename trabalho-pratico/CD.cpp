@@ -1,3 +1,9 @@
+/*
+Autores:
+    Isaac Vinícius - 500935
+    Mellyssa Alves - 495589
+    Francisco Pedro - 501039
+*/
 #include "header/CD.h"
 #include <bits/stdc++.h>
 
@@ -8,7 +14,7 @@ CD::CD(){}
 CD::~CD(){
     //cout << "Destuido!" << endl;
 }
-
+//construtor
 CD::CD(int duracao, float volume, bool coletanea, 
 const string &artista, const string &titulo, const vector <string> &faixa, 
 int lancamento, const string &genero, const vector <string> &keyword) : Midia

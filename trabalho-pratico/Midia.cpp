@@ -1,3 +1,9 @@
+/*
+Autores:
+    Isaac Vinícius - 500935
+    Mellyssa Alves - 495589
+    Francisco Pedro - 501039
+*/
 #include "header/Midia.h"
 #include <bits/stdc++.h>
 
@@ -22,7 +28,6 @@ Midia::Midia(const string &artista, const string &titulo, const vector <string> 
     this->genero = genero;
     this->keyword = keyword;
 }
-   
 
 string Midia::getArtista() const{
     return artista;
@@ -55,7 +60,6 @@ void Midia::setFaixa(const vector <string> &faixa){
 }
 
 //bool Midia::getFaixa2(list <string> &){}
-
 
 string Midia::getGenero() const{
     return genero;

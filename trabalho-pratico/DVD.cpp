@@ -1,3 +1,9 @@
+/*
+Autores:
+    Isaac Vinícius - 500935
+    Mellyssa Alves - 495589
+    Francisco Pedro - 501039
+*/
 #include "header/DVD.h"
 #include <bits/stdc++.h>
 
@@ -10,7 +16,7 @@ DVD::DVD(){}
 DVD::~DVD(){
     //cout << "Destruído!" << endl;
 }
-
+//construtor
 DVD::DVD(const vector <string> &formatoAudio, const vector <string> &formatoTela, const string &legenda,
 const string &artista, const string &titulo, const vector <string> &faixa, 
 int lancamento, const string &genero, const vector <string> &keyword) : Midia

@@ -1,3 +1,9 @@
+/*
+Autores:
+    Isaac Vinícius - 500935
+    Mellyssa Alves - 495589
+    Francisco Pedro - 501039
+*/
 #ifndef MIDIA_H
 #define MIDIA_H
 #include <bits/stdc++.h>

@@ -1,3 +1,9 @@
+/*
+Autores:
+    Isaac Vinícius - 500935
+    Mellyssa Alves - 495589
+    Francisco Pedro - 501039
+*/
 #ifndef CD_H
 #define CD_H
 #include <bits/stdc++.h>

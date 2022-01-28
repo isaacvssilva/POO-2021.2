@@ -1,3 +1,9 @@
+/*
+Autores:
+    Isaac Vinícius - 500935
+    Mellyssa Alves - 495589
+    Francisco Pedro - 501039
+*/
 #ifndef DVD_H
 #define DVD_H
 #include "Midia.h"
@@ -22,6 +28,7 @@ public:
     //construtor
     DVD(const vector <string> &, const vector <string> &, const string &, const string &, const string &, const vector <string> &, 
     int, const string &, const vector <string> &);
+    
 /*-----------Encapsulamento-----------*/
     const vector <string> getFormatoAudio() const;
     void setFormatoAudio(const vector <string> &);
