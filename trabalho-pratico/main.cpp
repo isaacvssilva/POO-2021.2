@@ -1,9 +1,3 @@
-/*
-Autores:
-    Isaac Vinícius - 500935
-    Mellyssa Alves - 495589
-    Francisco Pedro - 501039
-*/
 #include "header/Midia.h"
 #include "header/CD.h"
 #include "header/DVD.h"
@@ -43,28 +37,145 @@ bool ordemFaixaMidia(const Midia &faixa1, const Midia &faixa2){
     return false;
 }
 
+//funcao para ordenar as Midias por titulo
+bool ordenaTitulo(const Midia &titulo1, const Midia &titulo2){
+    if(titulo1.getTitutlo() < titulo2.getTitutlo()){
+        return true;
+    }
+    return false;
+}
+
+pair<vector<string>, vector<string>> showFaixa(const CD &faixaCD, const DVD &faixaDVD){
+    vector<string>auxCD;
+    vector<string>auxDVD;
+
+    map<string, string>guardaFaixaCD;
+    map<string, string>guardaFaixaDVD;
+
+    for(string i : faixaCD.getFaixa())
+        guardaFaixaCD.insert({i, i});
+    
+    for(string i : faixaDVD.getFaixa())
+        guardaFaixaDVD.insert({i, i});
+    
+    for(string i : faixaDVD.getFaixa()){
+        if(guardaFaixaCD.find(i) == guardaFaixaCD.end()){
+            auxDVD.push_back(i);
+
+        }else{
+            auxCD.push_back(i);
+        }
+    }
+    auxDVD.push_back("-");
+
+    for(string i : faixaCD.getFaixa()){
+        if(guardaFaixaDVD.find(i) == guardaFaixaDVD.end()){
+            auxDVD.push_back(i);
+        }
+    }
+    
+    pair<vector<string>, vector<string>>envia;
+    envia.first = auxCD;
+    envia.second = auxDVD;
+    return envia;
+}
+
+pair<vector<string>, vector<string>> funcaoP(const vector<CD> &faixaCD, const vector<DVD> &faixaDVD, string tituloCD, string tituloDVD){
+    CD cd1;
+    DVD dvd1;
+
+    for(CD cd : faixaCD){
+        if(cd.getTitutlo() == tituloCD){
+            cd1 = cd;
+            break;
+        }
+    }
+
+    for(DVD dvd : faixaDVD){
+        if(dvd.getTitutlo() == tituloDVD){
+            dvd1 = dvd;
+            break;
+        }
+    }
+    return showFaixa(cd1, dvd1);
+}
+
+
+//item F
+pair<vector<CD>, vector<DVD>>showGenero(const string genero, vector<CD>&cd, vector<DVD>&dvd){
+    vector<CD>auxCD;
+    vector<DVD>auxDVD;
+
+    for(CD i : cd)
+        if(i.getGenero() == genero){
+            auxCD.push_back(i);
+        }
+    
+    for(DVD i : dvd)
+        if(i.getGenero() == genero){
+            auxDVD.push_back(i);
+        }
+    
+    sort(auxCD.begin(), auxCD.end(), ordenaTitulo);
+    sort(auxDVD.begin(), auxDVD.end(), ordenaTitulo);
+
+    pair<vector<CD>, vector<DVD>> aux;
+    aux.first = auxCD;
+    aux.second = auxDVD;
+
+    return aux;
+}
+
+//item G
+vector<string> showKeyword(const vector<CD> &keyCD, const vector<DVD> &keyDVD){
+    map<string,string> auxKey;
+    vector<string> keyword;
+
+    for(CD i : keyCD)
+        for(string j : i.getKey()){
+            auto it = auxKey.find(j);
+
+            if(it == auxKey.end()){
+                auxKey.insert({j,j});
+                keyword.push_back(j);
+            }
+        }
+
+    for(DVD i : keyDVD)
+        for(string j : i.getKey()){
+            auto it = auxKey.find(j);
+
+            if(it == auxKey.end()){
+                auxKey.insert({j,j});
+                keyword.push_back(j);
+            }
+        }
+    return keyword;
+}
+
 int main(){
 
-    CD cd5(2, 3.0f, true, "David-Guetta", "7 - CD", {"Battle", "Flames"}, 2018, "internacional", {"eletronica"});
-    CD cd1(4, 2.0f, true, "Ariana-Grande", "Positions - CD", {"positions", "Obvious"}, 2020, "internacional", {"pop"});
-    CD cd3(2, 3.0f, true, "David-Guetta", "Guetta Blaster - CD", {"Money", "Stay"}, 2004, "internacional", {"eletronica"});
-    CD cd2(3, 3.0f, true, "Imagine-Dragons", "Origins (Deluxe) - CD", {"Natural", "Zero"}, 2018, "internacional", {"indie"});
-    CD cd4(5, 3.0f, true, "David-Guetta", "Pop Life - CD", {"Love Is Gone", "Delirius"}, 2007, "internacional", {"eletronica"});
+    CD cd5(2, 3.0f, true, "David-Guetta", "7", {"Battle", "Flames"}, 2018, "eletronica", {"eletro-CD"});
+    CD cd1(4, 2.0f, true, "Ariana-Grande", "Positions", {"positions", "Obvious"}, 2020, "pop", {"pop-CD"});
+    CD cd3(2, 3.0f, true, "David-Guetta", "Guetta-Blaster", {"Money", "Stay"}, 2004, "eletronica", {"eletro-CD"});
+    CD cd2(3, 3.0f, true, "Imagine-Dragons", "Origins", {"Natural", "Zero"}, 2018, "indie", {"indie-CD"});
+    CD cd4(5, 3.0f, true, "David-Guetta", "Pop-Life", {"Love-Is-Gone", "Delirius"}, 2007, "eletronica", {"eletro-CD"});
 
-    DVD dvd1({"mp4"}, {"16x9"}, "legenda-01", "Ariana-Grande", "Positions - DVD", {"positions", "Obvious"}, 2021, "internacional", {"pop"});
-    DVD dvd4({"mp4"}, {"16x9"}, "legenda-04", "Imagine-Dragons", "Origins (Deluxe) - DVD", {"Natural", "Zero"}, 2018, "internacional", {"indie"});
-    DVD dvd5({"mp4"}, {"16x9"}, "legenda-05", "Imagine-Dragons", "Mercury - DVD", {"My Life", "Giantes"}, 2021, "internacional", {"indie"});
-    DVD dvd2({"mp4"}, {"16x9"}, "legenda-02", "Ariana-Grande", "Sweetener - DVD", {"Sweetener", "Successful"}, 2018, "internacional", {"pop"});
-    DVD dvd3({"mp4"}, {"16x9"}, "legenda-03", "David-Guetta", "Pop Life - DVD", {"Love Is Gone", "Delirius"}, 2007, "internacional", {"eletronica"});
+    DVD dvd1({"mp4"}, {"16x9"}, "legenda-01", "Ariana-Grande", "Positions", {"positions", "teste1"}, 2021, "pop", {"pop-DVD"});
+    DVD dvd4({"mp4"}, {"16x9"}, "legenda-04", "Imagine-Dragons", "Origins", {"Natural", "Zero"}, 2018, "indie", {"indie-DVD"});
+    DVD dvd5({"mp4"}, {"16x9"}, "legenda-05", "Imagine-Dragons", "Mercury", {"My-Life", "Giantes"}, 2021, "indie", {"indie-DVD"});
+    DVD dvd2({"mp4"}, {"16x9"}, "legenda-02", "Ariana-Grande", "Sweetener", {"Sweetener", "Successful"}, 2018, "pop", {"pop-DVD"});
+    DVD dvd3({"mp4"}, {"16x9"}, "legenda-03", "David-Guetta", "Pop-Life", {"Love-Is-Gone", "Delirius"}, 2007, "eletronica", {"eletro-DVD"});
 
     //criando container para cada classe
     vector <CD> cds{cd1, cd2, cd3, cd4, cd5};
     vector <DVD> dvds{dvd1, dvd2, dvd3, dvd4, dvd5};
     vector <Midia> midias{cd1, cd2, cd3, cd4, cd5, dvd1, dvd2, dvd3, dvd4, dvd5};
 
-    string artista;
+    string artista, genero, tituloCD, tituloDVD;
     int ano = 0;
     int op = 0;
+ 
 
     //menu simples interativo
     cout << "Escolha uma opção:" << endl;
@@ -72,9 +183,9 @@ int main(){
     cout << "2. Exibir o nome de todos os DVDs de um artista." << endl;
     cout << "3. Exibir o nome de todas as Midias de um artista." << endl;
     cout << "4. Exibir todas as Midias a partir do ano informado." << endl;
-    cout << "5. Exibir Midias em comum e independentes de um artista a partir do titulo do CD e do DVD informado (INCOMPLETO)." << endl;
-    cout << "6. Exibir todas as Midias, separand CDs de DVDs a partir do genero informado (INCOMPLETO)." << endl;
-    cout << "7. Exibir todas os generos sem repeticao (INCOMPLETO)." << endl;
+    cout << "5. Exibir Midias em comum e independentes de um artista a partir do titulo do DVD e do CD informado." << endl;
+    cout << "6. Exibir todas as Midias, separando CDs de DVDs a partir do genero informado." << endl;
+    cout << "7. Exibir todas as keywords sem repeticao." << endl;
 
     cin >> op;
 
@@ -177,11 +288,51 @@ int main(){
             it++;
         }
     }else if(op == 5){
-        cout << "Opção 5 Incompleta" << endl;
+        cout << "Titulo disponiveis: " << endl;
+        cout << "7, Positions, Guetta-Blaster, Origins, Pop-Life, Mercury, Sweetener" << endl;
+
+        cin >> tituloCD >> tituloDVD;
+
+        pair<vector<string>, vector<string>>questaoE = funcaoP(cds, dvds, tituloCD, tituloDVD);
+
+        for(auto i : questaoE.first){
+            cout << "Em comum: ";
+            cout << i;
+        }
+        cout << endl;
+
+        for(auto i : questaoE.second){
+            cout << i << endl;
+            
+            if(i == "-"){
+                cout << "Apenas em CD: ";
+            }
+        }
+    
+        cout << endl;
+
     }else if(op == 6){
-        cout << "Opção 6 Incompleta" << endl;
+        cout << "Generos Disponives:" << endl;
+        cout << "eletronica, pop, indie" << endl;
+        cout << "informe o genero:" << endl;
+        cin >> genero;
+        pair<vector<CD>, vector<DVD>> questaoE = showGenero(genero, cds, dvds);
+
+        for(auto i : questaoE.first)
+            cout << "CD: " << i.getTitutlo() << " ";
+        cout << endl;
+        cout << "=====================" << endl;
+        
+        for(auto i : questaoE.second)
+            cout << "DVD: " << i.getTitutlo() << " ";
+        cout << endl;
+    
     }else if(op == 7){
-        cout << "Opção 7 Incompleta" << endl;
+        vector<string> keyword = showKeyword(cds, dvds);
+
+        for(auto i : keyword)
+            cout << i << " ";
+        cout << endl;
     }else{
         cout << "Inválido" << endl;
     }
